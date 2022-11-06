@@ -16,29 +16,26 @@ func mergeOrderedArray1(nums1 []int, nums2 []int) []int {
 //双指针
 //时间复杂度：O(m+n)
 //空间复杂度：O(m+n)
-func mergeOrderedArray2(nums1 []int, nums2 []int) []int {
-	m := len(nums1)
-	n := len(nums2)
-	sorted := make([]int, 0, m+n)
-	p1, p2 := 0, 0
+func mergeOrderedArray2(left []int, right []int) []int {
+	var result []int
 	for {
-		if p1 == m {
-			sorted = append(sorted, nums2[p2:]...)
+		if len(left) == 0 {
+			result = append(result, right...)
 			break
 		}
-		if p2 == n {
-			sorted = append(sorted, nums1[p1:]...)
+		if len(right) == 0 {
+			result = append(result, left...)
 			break
 		}
-		if nums1[p1] < nums2[p2] {
-			sorted = append(sorted, nums1[p1])
-			p1++
+		if left[0] <= right[0] {
+			result = append(result, left[0])
+			left = left[1:]
 		} else {
-			sorted = append(sorted, nums2[p2])
-			p2++
+			result = append(result, right[0])
+			right = right[1:]
 		}
 	}
-	return sorted
+	return result
 }
 
 //逆向双指针

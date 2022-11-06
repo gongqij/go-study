@@ -1,4 +1,4 @@
-package string
+package myAtoi
 
 import (
 	"github.com/stretchr/testify/assert"

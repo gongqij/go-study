@@ -5,11 +5,6 @@ import (
 	"testing"
 )
 
-func TestTwoSum(t *testing.T) {
-	result := twoSum2([]int{11, 11, 3, 9, 7, 7, 11}, 10)
-	fmt.Println(result)
-}
-
 func TestRemoveDuplicates(t *testing.T) {
 	nums := []int{}
 	len := removeDuplicates(nums)

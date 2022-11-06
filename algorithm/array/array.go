@@ -1,38 +1,5 @@
 package array
 
-/*
-Given nums = [2, 7, 11, 15], target = 9,
-
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1]
-*/
-//用map的索引，省去内层循环，使得时间复杂度小于 O(n2)
-func twoSum(nums []int, target int) []int {
-	var result []int
-	m := make(map[int]int)
-	for i := 0; i < len(nums); i++ {
-		another := target - nums[i]
-		if _, ok := m[another]; ok {
-			tempSlice := []int{m[another], i}
-			result = tempSlice
-		}
-		m[nums[i]] = i
-	}
-	return result
-}
-
-func twoSum2(nums []int, target int) [][]int {
-	var result [][]int
-	for i := 0; i < len(nums)-1; i++ {
-		for j := i + 1; j < len(nums); j++ {
-			if nums[i]+nums[j] == target {
-				result = append(result, []int{i, j})
-			}
-		}
-	}
-	return result
-}
-
 //删除有序数组中的重复项
 func removeDuplicates(nums []int) int {
 	if len(nums) == 0 {

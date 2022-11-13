@@ -11,12 +11,11 @@ type ListNode struct {
 //空间复杂度：O(1)。
 func reverseList(head *ListNode) *ListNode {
 	var prev *ListNode
-	curr := head
-	for curr != nil {
-		next := curr.Next
-		curr.Next = prev //
-		prev = curr
-		curr = next
+	for head != nil {
+		next := head.Next //保存下一个待反转的node
+		head.Next = prev  //当前待反转的node指向反转后链表
+		prev = head       //反转后链表头设为当前待反转的node
+		head = next       //curr指向下一个待反转的node
 	}
 	return prev
 }
@@ -43,8 +42,7 @@ func printNode(head *ListNode) {
 
 //判断链表是否存在环
 func hasCycle(head *ListNode) bool {
-	slow := head
-	fast := head
+	slow, fast := head, head
 	for fast != nil && fast.Next != nil {
 		slow = slow.Next
 		fast = fast.Next.Next

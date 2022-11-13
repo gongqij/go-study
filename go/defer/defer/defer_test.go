@@ -16,5 +16,5 @@ func TestDefer(t *testing.T) {
 }
 
 func TestTest4(t *testing.T) {
-	test4()
+	test5()
 }

@@ -40,12 +40,25 @@ func test3() (int, *int) {
 		fmt.Println("c defer1:", i) // 第一个defer输出,打印结果为 c defer: 1
 
 	}()
-	return i + 1, &i
+	return i, &i //返回0，2
+}
+
+func test4() (i int) { //预定义返回
+	defer func() {
+		i++
+		fmt.Println("c defer2:", i) // 第二个defer输出,打印结果为 c defer: 2
+	}()
+	defer func() {
+		i++
+		fmt.Println("c defer1:", i) // 第一个defer输出,打印结果为 c defer: 1
+
+	}()
+	return i //预定义变量，返回2
 }
 
 //调用 defer 关键字会立刻拷贝函数中引用的外部参数，所以 time.Since(startedAt) 的结果不是在 main 函数退出之前计算的，
 //而是在 defer 关键字调用时计算的，最终导致上述代码输出 0s。
-func test4() {
+func test5() {
 	startedAt := time.Now()
 	defer fmt.Println(time.Since(startedAt))
 

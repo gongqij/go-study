@@ -1,7 +1,7 @@
-package removeDuplicates
+package removeDuplication
 
-//升序数组去重
-func ascArrayRemoveDuplication(nums []int) []int {
+//有序数组去重
+func orderedArrayRemoveDuplicates(nums []int) []int {
 	slow := 1
 	for fast := 1; fast < len(nums); fast++ {
 		if nums[fast] != nums[fast-1] {
@@ -12,21 +12,21 @@ func ascArrayRemoveDuplication(nums []int) []int {
 	return nums[:slow]
 }
 
-//无序数组去重1
-func arrayRemoveDuplication1(nums []int) []int {
+//无序数组去重
+func unorderedArrayRemoveDuplication(nums []int) []int {
 	temp := make(map[int]struct{})
-	for _, num := range nums {
-		temp[num] = struct{}{}
-	}
 	var res []int
-	for k := range temp {
-		res = append(res, k)
+	for _, num := range nums {
+		if _, ok := temp[num]; !ok {
+			res = append(res, num)
+		}
+		temp[num] = struct{}{}
 	}
 	return res
 }
 
 //无序数组去重2
-func arrayRemoveDuplication2(nums []int) []int {
+func unorderedArrayRemoveDuplication2(nums []int) []int {
 	slow := 1
 	for fast := 1; fast < len(nums); fast++ {
 		flag := false

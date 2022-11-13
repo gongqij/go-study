@@ -6,9 +6,7 @@ import (
 
 //直接合并后排序
 func mergeOrderedArray1(nums1 []int, nums2 []int) []int {
-	m := len(nums1)
 	nums1 = append(nums1, nums2...)
-	copy(nums1[m:], nums2)
 	sort.Ints(nums1)
 	return nums1
 }
